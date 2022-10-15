@@ -1,3 +1,4 @@
+from termios import FF1
 from sympy import *
 import streamlit as st
 st.title('求Omega')
@@ -25,10 +26,14 @@ p = P
 div1 = 1/(theta1+beta1*w1)
 div2 = 1/(theta2+beta2*w2)
 div3 = 1/(theta3+beta3*w3)
-eq1 = Eq(((-2-div1)*w1+2*w2-p),0)
-eq2 = Eq(((-2-div2)*w2+w1+w3),0)
-eq3 = Eq(((-2-div3)*w3+2*w2),0)
+eq1 = (-2-div1)*w1+2*w2-p
+eq2 = (-2-div2)*w2+w1+w3
+eq3 = (-2-div3)*w3+2*w2
 def computed():
-  res = solve((eq1,eq2,eq3),(w1,w2,w3))
-  res
-st.button('计算',on_click=computed)
+  res = solve([eq1,eq2,eq3],[w1,w2,w3])
+  '结果是',res
+  '方程如下'
+  eq1 
+  eq2 
+  eq3
+st.button('计算并查看方程',on_click=computed)
