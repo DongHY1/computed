@@ -1,2 +1,2 @@
-sympy = 1.11.1
+sympy == 1.11.1
 streamlit==1.13.0
